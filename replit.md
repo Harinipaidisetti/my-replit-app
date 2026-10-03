@@ -1,44 +1,54 @@
-# [Project name]
+# NovaAI
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+NovaAI is a student-focused personal AI chat app for learning, coding help, writing, brainstorming, and study planning.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
+- `pnpm --filter @workspace/api-server run dev` — run the shared API server
+- `pnpm --filter @workspace/nova-ai run dev` — run the NovaAI web app
 - `pnpm run typecheck` — full typecheck across all packages
 - `pnpm run build` — typecheck + build all packages
 - `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+- Required secret for AI replies: `OPENAI_API_KEY`
 
 ## Stack
 
 - pnpm workspaces, Node.js 24, TypeScript 5.9
-- API: Express 5
-- DB: PostgreSQL + Drizzle ORM
-- Validation: Zod (`zod/v4`), `drizzle-zod`
-- API codegen: Orval (from OpenAPI spec)
+- Web: React, TypeScript, and Vite
+- API: Express 5; calls OpenAI Chat Completions from the server
+- Persistence: browser `localStorage` for conversations and preferences
+- Validation: generated Zod schemas
+- API codegen: Orval from the OpenAPI spec
 - Build: esbuild (CJS bundle)
 
 ## Where things live
 
-_Populate as you build — short repo map plus pointers to the source-of-truth file for DB schema, API contracts, theme files, etc._
+- `artifacts/nova-ai/` — React chat app, settings, and appearance.
+- `artifacts/api-server/src/routes/chat.ts` — server-side OpenAI request and validation.
+- `lib/api-spec/openapi.yaml` — source of truth for the API contract.
+- `lib/api-client-react/` and `lib/api-zod/` — generated client hooks and validation schemas.
+- `README.md` — beginner setup and project guide.
 
 ## Architecture decisions
 
-_Populate as you build — non-obvious choices a reader couldn't infer from the code (3-5 bullets)._
+- Chat history and preferences are stored in browser `localStorage`; they do not sync across devices.
+- The frontend sends AI requests to the shared API server; provider credentials stay server-side.
+- Without `OPENAI_API_KEY`, the API reports that setup is needed instead of generating sample replies.
 
 ## Product
 
-_Describe the high-level user-facing capabilities of this app once they exist._
+- Start chats from example prompts, continue conversations with context, and revisit or delete saved chats.
+- Supports light, dark, and system appearance, plus keyboard and timestamp preferences.
+- AI responses display formatted text and copyable code snippets.
 
 ## User preferences
 
-_Populate as you build — explicit user instructions worth remembering across sessions._
+- Keep the implementation beginner-friendly, avoid unnecessary complexity, and explain important decisions in simple terms.
 
 ## Gotchas
 
-_Populate as you build — sharp edges, "always run X before Y" rules._
+- After editing `lib/api-spec/openapi.yaml`, rerun `pnpm --filter @workspace/api-spec run codegen`.
+- The NovaAI web preview uses `/`; API requests use the shared `/api` service.
 
 ## Pointers
 
