@@ -1,0 +1,855 @@
+You are an expert full-stack web developer, UI/UX designer, and AI application architect.
+
+I am a BTech student with basic coding knowledge. I want you to build a complete, modern, responsive **Personal AI Chatbot web application** for me using Replit.
+
+IMPORTANT:
+
+* I am a beginner.
+* I want to use AI/no-code assistance as much as possible.
+* Do not unnecessarily make the project complicated.
+* Build the application step-by-step, but handle the implementation yourself.
+* Use clean, beginner-friendly code.
+* Explain important decisions in simple language.
+* Do not leave major features as placeholders.
+* The final application should actually run in Replit.
+* Test the application and fix errors before considering the project complete.
+
+==================================================
+
+1. PROJECT NAME
+   ==================================================
+
+Create a personal AI chatbot called:
+
+"NovaAI"
+
+You may suggest a better name if necessary, but keep the final name short, modern, and suitable for a student-built AI product.
+
+Tagline:
+
+"Your personal AI assistant, whenever you need it."
+
+==================================================
+2. MAIN GOAL
+============
+
+Build a web-based AI chatbot where a user can:
+
+1. Open the website.
+2. See a modern chatbot interface.
+3. Type a question or message.
+4. Send the message.
+5. Receive an AI-generated response.
+6. Continue the conversation naturally.
+7. Start a new conversation.
+8. View previous conversations.
+9. Delete conversations.
+10. Use the chatbot comfortably on both desktop and mobile.
+
+The chatbot should feel like a real AI assistant rather than a simple static demo.
+
+==================================================
+3. TECHNOLOGY REQUIREMENTS
+==========================
+
+Choose a beginner-friendly and reliable technology stack that works well inside Replit.
+
+Preferred approach:
+
+Frontend:
+
+* React
+* HTML
+* CSS
+* JavaScript/TypeScript
+
+Backend:
+
+* Node.js
+* Express or another simple backend framework if needed
+
+AI:
+
+* Connect the chatbot to an appropriate AI API.
+* Store the API key securely using Replit Secrets / environment variables.
+* NEVER expose the API key in frontend code.
+* NEVER hard-code the API key into source files.
+
+Database:
+
+* Use a simple database supported by Replit.
+* Store conversations and messages if persistent storage is required.
+
+If Replit provides a simpler native solution for any of these requirements, use it when appropriate.
+
+Before implementing anything, choose the simplest architecture that can realistically support the requested features.
+
+==================================================
+4. DESIGN STYLE
+===============
+
+Create a modern AI-product-style interface.
+
+Visual direction:
+
+* Clean
+* Minimal
+* Professional
+* Futuristic but not overly complicated
+* Student-project friendly
+* Responsive
+* Easy to understand
+* Smooth animations
+* Good typography
+* Comfortable spacing
+
+Use a modern color system with:
+
+* Dark/light friendly interface
+* One primary accent color
+* Neutral backgrounds
+* High readability
+* Accessible contrast
+
+Do NOT make the interface excessively flashy.
+
+The website should look like something that could realistically be demonstrated at a college hackathon.
+
+==================================================
+5. MAIN SCREEN
+==============
+
+Create a main chatbot screen containing:
+
+LEFT SIDEBAR:
+
+At the top:
+
+* NovaAI logo/name
+* "New Chat" button
+
+Conversation section:
+
+* List previous conversations
+* Each conversation should have a short title
+* Most recent conversations should appear first
+
+Bottom of sidebar:
+
+* Settings
+* About
+* Theme toggle
+
+MAIN CHAT AREA:
+
+Top navigation:
+
+* NovaAI name/logo
+* Current conversation title
+* New chat option
+* Settings/menu icon
+
+Chat area:
+
+* Welcome screen when there is no conversation
+
+Welcome message:
+
+"Hi! I'm NovaAI 👋
+Your personal AI assistant.
+Ask me anything and let's get started."
+
+Below the welcome message show example prompts such as:
+
+"Explain quantum physics simply"
+
+"Help me debug my code"
+
+"Create a study plan"
+
+"Explain this concept like I'm 10"
+
+"Help me prepare for my exam"
+
+These should be clickable and automatically populate/send the prompt.
+
+==================================================
+6. CHAT MESSAGE DESIGN
+======================
+
+User messages:
+
+* Clearly distinguish them from AI messages.
+* Use a clean message bubble/card.
+* Display user messages on the appropriate side.
+
+AI messages:
+
+* Display a NovaAI/AI icon.
+* Use readable formatting.
+* Support:
+
+  * Paragraphs
+  * Bullet points
+  * Numbered lists
+  * Code blocks
+  * Bold text
+  * Italic text
+  * Headings where appropriate
+
+Code blocks should have:
+
+* Monospace font
+* Copy button
+* Proper visual separation from normal text
+
+Add a small "Copy" button to AI responses.
+
+==================================================
+7. CHAT INPUT
+=============
+
+At the bottom of the chat screen create a modern message composer.
+
+Features:
+
+* Large text input
+* Send button
+* Enter = send
+* Shift + Enter = new line
+* Auto-expand textarea
+* Disable send button when there is no message
+* Loading state while AI is responding
+
+Placeholder:
+
+"Message NovaAI..."
+
+Add a small disclaimer:
+
+"NovaAI can make mistakes. Verify important information."
+
+==================================================
+8. AI BEHAVIOR
+==============
+
+The AI should behave as a helpful personal assistant.
+
+System behavior:
+
+You are NovaAI, a helpful, friendly, knowledgeable AI assistant.
+
+Your goals:
+
+* Answer questions clearly.
+* Explain difficult concepts simply.
+* Help users learn.
+* Help with programming.
+* Help with brainstorming.
+* Help with writing.
+* Help with study planning.
+* Be conversational.
+* Ask clarifying questions when necessary.
+* Avoid unnecessarily long answers.
+* Use examples when they improve understanding.
+* Structure complex answers using headings and bullet points.
+* Never pretend to know something when uncertain.
+* Clearly communicate uncertainty.
+
+Because this is a student-oriented application, explanations should generally be understandable to beginners.
+
+==================================================
+9. CONVERSATION MEMORY
+======================
+
+Implement conversation context.
+
+The AI should remember messages within the current conversation so that:
+
+User:
+"What is Python?"
+
+AI:
+"Python is..."
+
+User:
+"Why is it popular?"
+
+AI should understand that "it" refers to Python.
+
+Each conversation should maintain its own message history.
+
+When starting a new chat:
+
+* Clear the active conversation.
+* Do not mix the previous conversation into the new one.
+
+==================================================
+10. CHAT HISTORY
+================
+
+Implement persistent conversation history if supported by the chosen database.
+
+Each conversation should contain:
+
+* Unique ID
+* Title
+* Created date/time
+* Updated date/time
+* Messages
+
+Automatically generate a short title from the first user message.
+
+Example:
+
+User:
+"Explain JavaScript closures"
+
+Conversation title:
+"JavaScript Closures"
+
+Allow users to:
+
+* Open conversation
+* Create new conversation
+* Delete conversation
+
+Add a confirmation before permanently deleting a conversation.
+
+==================================================
+11. NEW CHAT
+============
+
+The "New Chat" button should:
+
+* Create a fresh conversation.
+* Clear the current messages from the main chat view.
+* Display the welcome screen.
+* Focus the message input.
+
+==================================================
+12. LOADING EXPERIENCE
+======================
+
+While waiting for the AI:
+
+Display an animated typing indicator such as:
+
+● ● ●
+
+or
+
+"NovaAI is thinking..."
+
+The UI must not freeze while waiting for the API.
+
+Handle slow API responses gracefully.
+
+==================================================
+13. ERROR HANDLING
+==================
+
+Create user-friendly error messages.
+
+If the AI API fails:
+
+"Sorry, I couldn't process that request right now. Please try again."
+
+If there is no internet connection:
+
+"You're currently offline. Please check your internet connection."
+
+If the API key is missing:
+
+Show a developer-friendly error in the server logs, but do NOT expose secrets to the user.
+
+Never show raw stack traces to normal users.
+
+==================================================
+14. SETTINGS
+============
+
+Create a Settings panel/page.
+
+Include:
+
+Appearance:
+
+* Light mode
+* Dark mode
+* System default
+
+Chat:
+
+* Enter to send toggle
+* Show timestamps toggle
+
+General:
+
+* Clear all conversations
+* About NovaAI
+
+Store appropriate preferences locally.
+
+==================================================
+15. RESPONSIVE DESIGN
+=====================
+
+The application must work properly on:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile phone
+
+Desktop:
+
+* Sidebar visible.
+
+Mobile:
+
+* Sidebar becomes a slide-out menu.
+* Chat takes the full screen width.
+
+Make sure:
+
+* Buttons are touch-friendly.
+* Text does not overflow.
+* Code blocks can scroll horizontally.
+* Message input remains usable on small screens.
+
+==================================================
+16. ACCESSIBILITY
+=================
+
+Follow basic accessibility principles.
+
+Include:
+
+* Proper button labels
+* Keyboard navigation
+* Good color contrast
+* Visible focus states
+* Semantic HTML
+* Accessible form controls
+* ARIA labels where useful
+
+Do not rely only on color to communicate information.
+
+==================================================
+17. SECURITY
+============
+
+This is extremely important.
+
+Never expose API keys in:
+
+* React code
+* HTML
+* CSS
+* GitHub
+* Browser requests
+
+Use environment variables / Replit Secrets.
+
+Validate user input on the server.
+
+Do not trust client-side data.
+
+Implement reasonable protection against:
+
+* Empty requests
+* Extremely large messages
+* Malformed requests
+
+Do not store unnecessary personal information.
+
+==================================================
+18. API ARCHITECTURE
+====================
+
+The frontend should NOT directly expose the AI API key.
+
+Preferred flow:
+
+User
+↓
+React Frontend
+↓
+Backend API
+↓
+AI Provider
+↓
+Backend
+↓
+React Frontend
+↓
+AI Response
+
+Create a clean backend endpoint such as:
+
+POST /api/chat
+
+Input should contain the conversation/message information required by the backend.
+
+Return a clean JSON response.
+
+Handle API errors properly.
+
+==================================================
+19. ENVIRONMENT VARIABLES
+=========================
+
+Create a clear environment variable setup.
+
+For example:
+
+AI_API_KEY=your_key_here
+
+Do not put the real key in the code.
+
+Create a simple README section explaining:
+
+1. Open Replit Secrets.
+2. Add the required API key.
+3. Restart the application if necessary.
+4. Run the project.
+
+If the chosen AI provider requires a model name or additional configuration, explain those environment variables clearly.
+
+==================================================
+20. DATABASE STRUCTURE
+======================
+
+If a database is used, design a simple schema.
+
+Suggested structure:
+
+Conversation:
+
+* id
+* title
+* createdAt
+* updatedAt
+
+Message:
+
+* id
+* conversationId
+* role
+* content
+* createdAt
+
+Use the simplest reliable database solution available in Replit.
+
+==================================================
+21. UI COMPONENT STRUCTURE
+==========================
+
+Keep the frontend organized into reusable components.
+
+Suggested structure:
+
+App
+├── Sidebar
+│   ├── Logo
+│   ├── NewChatButton
+│   ├── ConversationList
+│   └── SidebarFooter
+│
+├── ChatWindow
+│   ├── ChatHeader
+│   ├── WelcomeScreen
+│   ├── MessageList
+│   │   └── Message
+│   └── ChatInput
+│
+├── Settings
+│
+└── About
+
+Do not create unnecessary components just for the sake of complexity.
+
+==================================================
+22. WELCOME SCREEN
+==================
+
+Make the empty chat screen visually appealing.
+
+Include:
+
+NovaAI
+
+"Your personal AI assistant"
+
+Short description:
+
+"Ask questions, learn concepts, write code, brainstorm ideas, and explore new topics."
+
+Example prompt cards:
+
+💡 Learn
+"Explain recursion in simple words"
+
+💻 Code
+"Help me understand this Python code"
+
+📚 Study
+"Create a 7-day study plan"
+
+🧠 Explore
+"Explain quantum computing for a beginner"
+
+Clicking a prompt should send or populate that message.
+
+==================================================
+23. MARKDOWN SUPPORT
+====================
+
+AI responses should support Markdown-style formatting.
+
+Support:
+
+* Bold
+* Italic
+* Lists
+* Headings
+* Code
+* Code blocks
+* Links where appropriate
+
+Make sure Markdown is rendered safely.
+
+Do NOT dangerously inject unsanitized HTML.
+
+==================================================
+24. CODE COPY FEATURE
+=====================
+
+For every AI-generated code block:
+
+Add a "Copy" button.
+
+When clicked:
+
+* Copy code to clipboard.
+* Change button text temporarily to "Copied!"
+
+Example:
+
+[Copy]
+
+→
+
+[Copied ✓]
+
+==================================================
+25. CHAT ACTIONS
+================
+
+For each AI response optionally provide:
+
+* Copy
+* Regenerate
+* Retry if an error occurs
+
+For user messages:
+
+* Copy
+
+Keep the interface clean and don't overload it with buttons.
+
+==================================================
+26. ANIMATIONS
+==============
+
+Use subtle animations only.
+
+Examples:
+
+* Sidebar opening
+* Message appearing
+* Typing indicator
+* Button hover
+* New conversation transition
+
+Avoid excessive animations because the chatbot should remain professional and fast.
+
+==================================================
+27. PERFORMANCE
+===============
+
+Keep the application lightweight.
+
+Avoid:
+
+* Unnecessary dependencies
+* Huge libraries
+* Excessive animations
+* Repeated API calls
+* Unnecessary database queries
+
+Use efficient React state management.
+
+Prevent unnecessary re-renders where practical.
+
+==================================================
+28. MOBILE UX
+=============
+
+On mobile:
+
+* Sidebar should become a drawer.
+* Add a menu button.
+* Message bubbles should fit the screen.
+* Input should remain fixed near the bottom.
+* Keyboard should not make the input unusable.
+* Long responses should scroll naturally.
+
+Test common mobile widths.
+
+==================================================
+29. ABOUT PAGE
+==============
+
+Create a simple About section.
+
+Title:
+
+"About NovaAI"
+
+Text:
+
+"NovaAI is a personal AI assistant project created as a student-built full-stack AI application."
+
+Include:
+
+* Built with modern web technologies
+* AI-powered conversations
+* Responsive interface
+* Conversation history
+
+Add:
+
+"Built as a learning and innovation project."
+
+==================================================
+30. README
+==========
+
+Create a professional README.md.
+
+Include:
+
+# NovaAI
+
+## Overview
+
+## Features
+
+## Technology Stack
+
+## Project Structure
+
+## How It Works
+
+## Environment Variables
+
+## Running the Project
+
+## AI Integration
+
+## Database
+
+## Security
+
+## Future Improvements
+
+## Troubleshooting
+
+Write the README so a beginner BTech student can understand it.
+
+==================================================
+31. BEGINNER-FRIENDLY CODE
+==========================
+
+I am learning web development.
+
+Therefore:
+
+* Use clear variable names.
+* Avoid unnecessary abstraction.
+* Add comments for important logic.
+* Keep functions reasonably small.
+* Explain complex code.
+* Avoid clever code that is difficult for beginners to understand.
+
+When you finish implementation, explain:
+
+1. How the frontend works.
+2. How the backend works.
+3. How the AI API works.
+4. How the database works.
+5. How messages travel from the user to the AI and back.
+6. Where environment variables are stored.
+7. Which files I should understand first.
+
+==================================================
+32. DEVELOPMENT PROCESS
+=======================
+
+Follow this process:
+
+PHASE 1 — PLAN
+
+Analyze the requirements and choose the simplest suitable architecture.
+
+PHASE 2 — BUILD
+
+Create the application structure and implement the frontend.
+
+PHASE 3 — BACKEND
+
+Create the backend API and connect the AI provider securely.
+
+PHASE 4 — DATABASE
+
+Implement conversation persistence if required.
+
+PHASE 5 — INTEGRATION
+
+Connect frontend → backend → AI → frontend.
+
+PHASE 6 — UI POLISH
+
+Improve responsiveness, spacing, typography, loading states and error states.
+
+PHASE 7 — TESTING
+
+Test:
+
+* New chat
+* Sending messages
+* Multiple messages
+* Conversation context
+* Conversation history
+* Delete conversation
+* API failure
+* Empty message
+* Long message
+* Long AI response
+* Mobile layout
+* Dark mode
+* Code copying
+
+PHASE 8 — FIX
+
+Fix all errors you discover.
+
+==================================================
+33. IMPORTANT REPLIT INSTRUCTIONS
+=================================
+
+You are operating as my development agent.
+
+Do not simply give me instructions for how I could
